@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -17,6 +19,24 @@ func GetInput(path string) (string, error) {
 
 	b, err := ioutil.ReadAll(file)
 	return string(b), nil
+}
+
+func GetStringSlice(path string) []string {
+	s, _ := GetInput(path)
+	stringSlice := strings.Split(s, "\n")
+	return stringSlice[:len(stringSlice)-1]
+}
+
+func GetNumberSlice(path string) []int {
+	stringSlice := GetStringSlice(path)
+
+	var numberSlice []int
+	for _, v := range stringSlice {
+		n, _ := strconv.Atoi(v)
+		numberSlice = append(numberSlice, n)
+	}
+
+	return numberSlice
 }
 
 type Timer struct {

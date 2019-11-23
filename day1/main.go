@@ -2,14 +2,12 @@ package day1
 
 import (
 	"fmt"
-	"strconv"
-	"strings"
 
 	"advent/utils"
 )
 
 func Part2() {
-	numberSlice := getNumberSlice()
+	numberSlice := utils.GetNumberSlice("./day1/input.txt")
 
 	var sums = []int{numberSlice[0]}
 
@@ -35,24 +33,11 @@ func includes(slice []int, i int) bool {
 }
 
 func Part1() {
-	numberSlice := getNumberSlice()
+	numberSlice := utils.GetNumberSlice("./day1/input.txt")
 	var sum = 0
 	for _, v := range numberSlice {
 		sum = sum + v
 	}
 
 	fmt.Println(sum)
-}
-
-func getNumberSlice() []int {
-	s, _ := utils.GetInput("./day1/input.txt")
-	stringSlice := strings.Split(s, "\n")
-
-	var numberSlice []int
-	for _, v := range stringSlice {
-		n, _ := strconv.Atoi(v)
-		numberSlice = append(numberSlice, n)
-	}
-
-	return numberSlice[:len(numberSlice)-1]
 }

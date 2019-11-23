@@ -2,14 +2,14 @@ package main
 
 import (
 	"advent/utils"
-	"advent/day1"
+	"advent/day2"
 )
 
 func main() {
 	t := utils.Timer{}
 	t.Start()
 
-	day1.Part2()
+	day2.Part1()
 
 	t.Stop()
 }
