@@ -7,7 +7,45 @@ import (
 )
 
 func Part2() {
+	s := utils.GetStringSlice("./day2/input.txt")
+	sMatrix := stringMatrix(s)
 
+	var theTwo = [2]string{}
+	for _, v := range sMatrix {
+		theTwo = checkForTheOne(sMatrix, v)
+		if theTwo[0] != "" {
+			break
+		}
+	}
+	fmt.Println(theTwo)
+}
+
+func checkForTheOne(sMatrix [][]string, b []string) [2]string {
+	var theTwo = [2]string{}
+	for _, a := range sMatrix {
+		count := countDiffs(a, b)
+		if count == 1 {
+			theTwo[0] = strings.Join(a, "")
+			theTwo[1] = strings.Join(b, "")
+			break
+		}
+	}
+
+	return theTwo
+}
+
+func countDiffs(a, b []string) int {
+	var count = 0
+	for i, _ := range a {
+		if a[i] != b[i] {
+			count = count + 1
+		}
+		if count > 1 {
+			break
+		}
+	}
+
+	return count
 }
 
 func Part1() {

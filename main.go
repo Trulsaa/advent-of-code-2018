@@ -9,7 +9,7 @@ func main() {
 	t := utils.Timer{}
 	t.Start()
 
-	day2.Part1()
+	day2.Part2()
 
 	t.Stop()
 }
